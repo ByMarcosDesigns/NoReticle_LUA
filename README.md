@@ -1,4 +1,4 @@
-# NoReticle
+# NoReticle (Optimized)
 A server-side script for FiveM which disables the reticle on all weapons besides sniper rifles.
 
 /-/ INSTALLATION \\-\
