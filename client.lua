@@ -1,28 +1,23 @@
+local _HideHudComponentThisFrame = HideHudComponentThisFrame
+
 Citizen.CreateThread(function()
-	local isSniper = false
 	while true do
 		Citizen.Wait(0)
 
-    	local ped = GetPlayerPed(-1)
-
+    	local ped = PlayerPedId()
+		local sleep = true
 		
-		--print(GetHashKey("WEAPON_SNIPERRIFLE"))
 		local currentWeaponHash = GetSelectedPedWeapon(ped)
 
-		if currentWeaponHash == 100416529 then
-			isSniper = true
-		elseif currentWeaponHash == 205991906 then
-			isSniper = true
-		elseif currentWeaponHash == -952879014 then
-			isSniper = true
-		elseif currentWeaponHash == GetHashKey('WEAPON_HEAVYSNIPER_MK2') then
-			isSniper = true
-		else
-			isSniper = false
+		if not (currentWeaponHash == -1569615261) then
+			sleep = false
+			if not (currentWeaponHash == 100416529 or currentWeaponHash == 205991906 or currentWeaponHash == -952879014 or currentWeaponHash == 177293209) then
+				_HideHudComponentThisFrame(14)
+			end
 		end
 
-		if not isSniper then
-			HideHudComponentThisFrame(14)
+		if sleep then
+			Citizen.Wait(600)
 		end
 	end
 end)
